@@ -1,3 +1,31 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.information {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.information input {
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+}
+
+.information label {
+  margin-top: 1rem;
+}
+
+.information button {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+}
+
+.information button:hover {
+  cursor: pointer;
 }
