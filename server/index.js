@@ -1,6 +1,10 @@
 const express = require('express');
 const app = express();
 const mysql = require('mysql');
+const cors = require('cors');
+
+app.use(cors());
+app.use(express.json());
 
 //Get connection with the db
 const db = mysql.createConnection({
@@ -14,6 +18,7 @@ const db = mysql.createConnection({
 //Insert
 app.post('/create', (req, res)=>{
 
+    console.log(req.body)
     const name = req.body.name
     const age = req.body.age
     const country = req.body.country
@@ -32,4 +37,4 @@ app.post('/create', (req, res)=>{
 });
 
 
-app.listen(3310, ()=>{console.log("Running on 3001")});
+app.listen(3001, ()=>{console.log("Running on 3001")});
