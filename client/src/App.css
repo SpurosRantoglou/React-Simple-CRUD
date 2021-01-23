@@ -21,11 +21,35 @@
   margin-top: 1rem;
 }
 
-.information button {
+.employees {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.employee {
+  width: 50%;
+  height: auto;
+  border: 1px solid #000;
+  border-radius: 16px;
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+}
+
+.employee h3 {
+  margin: 1.5rem;
+}
+
+/** Utils **/
+
+.btn {
   margin-top: 2rem;
   padding: 1rem 2rem;
 }
 
-.information button:hover {
+.btn:hover {
   cursor: pointer;
 }

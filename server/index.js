@@ -36,5 +36,18 @@ app.post('/create', (req, res)=>{
 
 });
 
+//Get 
+app.get('/employees', (req, res) => {
+    
+    
+    db.query("SELECT * FROM employees", (error, result) => {
+        if(error){
+            console.log(error)
+        }else{
+            res.send(result)
+        }
+    });
+});
+
 
 app.listen(3001, ()=>{console.log("Running on 3001")});

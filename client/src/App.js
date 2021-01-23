@@ -10,8 +10,10 @@ function App() {
   const [position, setPosition] = useState('');
   const [wage, setWage] = useState(0);
 
+  const [employList, setEmployList] = useState([])
+
   const displayInfo = () =>{
-    console.log(name + age + country + position + wage)
+    console.log('Success: ' + name + age + country + position + wage)
   }
 
   const addEmployee = () => {
@@ -22,7 +24,23 @@ function App() {
       position: position, 
       wage: wage
     }).then(() => {
-      console.log('Success')
+
+      //When we add an employ, automatically update the employList
+      setEmployList([...employList,{
+        name: name,
+        age: age, 
+        country: country, 
+        position: position, 
+        wage: wage}])
+        
+      displayInfo()
+    })
+  };
+
+  const getEmployees = () =>{
+    Axios.get('http://localhost:3001/employees').then((response) => {
+        setEmployList(response.data);
+        console.log(response);
     })
   };
 
@@ -39,7 +57,21 @@ function App() {
         <input type="text" onChange={(event)=>{setPosition(event.target.value)}}/>
         <label>Wage (annually):</label>
         <input type="number" onChange={(event)=>{setWage(event.target.value)}}/>
-        <button onClick={addEmployee}>Add Employee</button>
+        <button className="btn" onClick={addEmployee}>Add Employee</button>
+      </div>
+
+      <div className="employees">
+        <button className="btn" onClick={getEmployees} >Show Employees</button>
+        {employList.map((val, key)=>{
+          return <div className="employee">
+                  <h3>Name: {val.name}</h3>
+                  <h3>Age: {val.age}</h3>
+                  <h3>Country: {val.country}</h3>
+                  <h3>Position: {val.position}</h3>
+                  <h3>Wage: {val.wage}</h3>
+                </div>
+        })}
+        
       </div>
     </div>
   );
